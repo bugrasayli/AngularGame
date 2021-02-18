@@ -1,0 +1,52 @@
+<div>
+    <label for="cars" style="margin-left: 725px; width: 300px;">Dimension:</label>
+    <select name="dim" id="cars" (change)="Change($event)">
+        <option value="3">three</option>
+        <option value="4">four</option>
+        <option value="5">five</option>
+        <option value="6">six</option>
+    </select>
+</div>
+
+<div>
+
+    <button style="margin-left: 725px; width: 300px; margin-top:10px" (click)="play()">
+        PLAY
+    </button>
+</div>
+
+<div [style.width.px]="XY" class="container">
+
+    <div>
+        <span class="label info" style="float: left;">
+            Process: {{process}}
+        </span>
+        <span class="label warning" style="float: right;">
+            Timer: {{counter}}
+        </span>
+    </div>
+    <br>
+    <div style="height:80px; margin-top: 30px;">
+        <span style="width: 50px;" *ngIf="process == Dimension*Dimension" class="label success">
+            WIN - your score is : {{counter}} second
+        </span>
+        <br>
+        <br>
+        <span style="width: 50px; margin-top: 10px;" *ngIf="process == Dimension*Dimension && checkRecord " class="label success">
+            New Record!
+        </span>
+        <br>
+
+        <div style="width: 150px; margin-top: 20px;" *ngIf="process == Dimension*Dimension " >
+            <span class="label warning" *ngIf="errorCount !=0">Number of Error: {{errorCount}}</span> 
+            <span class="label success" *ngIf="errorCount ==0">No Error</span> 
+        </div>
+
+    </div>
+    <br>
+    <div style="margin-top: 30px;">
+        <button *ngFor="let ar of array2" (click)="check(ar)" [style.width.px]="XYbutton" [style.height.px]="XYbutton">
+            {{ar}}
+        </button>
+    </div>
+</div>
